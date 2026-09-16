@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Brew & Bean Coffee House serves freshly brewed premium coffee, delicious snacks, desserts, and a cozy café experience in Chennai." />
+  <title>Brew & Bean Coffee House | Premium Coffee & Café</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- CSS Reset & Variables ---------- */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --brown-dark: #3E2723;
+      --brown-medium: #6D4C41;
+      --brown-light: #A1887F;
+      --cream: #F5E6D3;
+      --beige: #E8D5C4;
+      --charcoal: #2C2C2C;
+      --white: #FFFFFF;
+      --gold: #C9A87C;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+      --nav-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      border: none;
+    }
+
+    button {
+      cursor: pointer;
+      background: none;
+    }
+
+    /* ---------- Utility ---------- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 48px;
+      color: #6B5B4F;
+      font-weight: 300;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--brown-dark);
+      color: var(--cream);
+      border-color: var(--brown-dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--brown-medium);
+      border-color: var(--brown-medium);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(62, 39, 35, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brown-dark);
+      border-color: var(--brown-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--brown-dark);
+      color: var(--cream);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(62, 39, 35, 0.2);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--brown-dark);
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+
+    .btn-gold:hover {
+      background: #b8956a;
+      border-color: #b8956a;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(201, 168, 124, 0.4);
+    }
+
+    .btn-sm {
+      padding: 10px 22px;
+      font-size: 0.85rem;
+    }
+
+    /* ---------- Animations ---------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* ---------- Scroll to top ---------- */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--brown-dark);
+      color: var(--cream);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--brown-medium);
+      transform: translateY(-5px);
+    }
+
+    /* ---------- Navigation ---------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(245, 230, 211, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(62, 39, 35, 0.06);
+    }
+
+    .navbar.scrolled {
+      background: rgba(245, 230, 211, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      position: relative;
+      padding: 6px 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown-dark);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-order {
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      border-radius: 40px;
+      background: var(--brown-dark);
+      color: var(--cream);
+      border: 2px solid var(--brown-dark);
+      transition: var(--transition);
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-order:hover {
+      background: var(--brown-medium);
+      border-color: var(--brown-medium);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 2.5px;
+      background: var(--brown-dark);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(62, 39, 35, 0.88) 0%, rgba(62, 39, 35, 0.7) 50%, rgba(62, 39, 35, 0.5) 100%),
+        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;
+      padding-top: var(--nav-height);
+    }
+
+    .hero-content {
+      max-width: 720px;
+      color: var(--cream);
+      padding: 40px 0;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201, 168, 124, 0.2);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      margin-bottom: 28px;
+      border: 1px solid rgba(201, 168, 124, 0.3);
+      font-weight: 400;
+    }
+
+    .hero-highlight i {
+      font-size: 0.7rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-buttons .btn-primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 600;
+    }
+
+    .hero-buttons .btn-primary:hover {
+      background: #b8956a;
+      border-color: #b8956a;
+    }
+
+    .hero-buttons .btn-outline {
+      border-color: rgba(245, 230, 211, 0.6);
+      color: var(--cream);
+    }
+
+    .hero-buttons .btn-outline:hover {
+      background: var(--cream);
+      color: var(--brown-dark);
+      border-color: var(--cream);
+    }
+
+    /* ---------- About ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .about-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .about-text p {
+      color: #5D4E44;
+      font-weight: 300;
+      margin-bottom: 32px;
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+    }
+
+    .about-feature:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .about-feature i {
+      font-size: 1.4rem;
+      color: var(--gold);
+      width: 36px;
+      text-align: center;
+    }
+
+    .about-feature span {
+      font-weight: 500;
+      font-size: 0.92rem;
+      color: var(--brown-dark);
+    }
+
+    /* ---------- Menu ---------- */
+    .menu-section {
+      background: var(--beige);
+    }
+
+    .menu-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .filter-btn {
+      padding: 10px 26px;
+      border-radius: 60px;
+      background: var(--white);
+      color: var(--brown-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+
+    .filter-btn:hover {
+      background: var(--cream);
+      border-color: var(--gold);
+    }
+
+    .filter-btn.active {
+      background: var(--brown-dark);
+      color: var(--cream);
+      border-color: var(--brown-dark);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .menu-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-card-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .menu-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .menu-card:hover .menu-card-image img {
+      transform: scale(1.08);
+    }
+
+    .menu-card-body {
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .menu-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 6px;
+    }
+
+    .menu-card-body p {
+      font-size: 0.88rem;
+      color: #7A6A5E;
+      font-weight: 300;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .menu-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .menu-price {
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--brown-dark);
+    }
+
+    .add-to-cart {
+      padding: 10px 20px;
+      border-radius: 40px;
+      background: var(--brown-dark);
+      color: var(--cream);
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: var(--transition);
+      border: 2px solid var(--brown-dark);
+      cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+      background: var(--brown-medium);
+      border-color: var(--brown-medium);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(62, 39, 35, 0.2);
+    }
+
+    /* ---------- Special Offers ---------- */
+    .offers-section {
+      background: var(--brown-dark);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offers-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 168, 124, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .offers-section .section-title {
+      color: var(--cream);
+    }
+
+    .offers-section .section-subtitle {
+      color: rgba(245, 230, 211, 0.7);
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-card {
+      background: rgba(245, 230, 211, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(201, 168, 124, 0.15);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .offer-card:hover {
+      transform: translateY(-8px);
+      background: rgba(245, 230, 211, 0.1);
+      border-color: rgba(201, 168, 124, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .offer-card i {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .offer-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--cream);
+    }
+
+    .offer-card p {
+      font-size: 0.92rem;
+      color: rgba(245, 230, 211, 0.75);
+      font-weight: 300;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+
+    .offer-card .btn-gold {
+      padding: 10px 28px;
+      font-size: 0.85rem;
+    }
+
+    /* ---------- Why Choose Us ---------- */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+      border: 1px solid rgba(62, 39, 35, 0.04);
+    }
+
+    .why-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border-color: rgba(201, 168, 124, 0.2);
+    }
+
+    .why-card .icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      transition: var(--transition);
+    }
+
+    .why-card:hover .icon-circle {
+      background: var(--gold);
+      transform: scale(1.08) rotate(-5deg);
+    }
+
+    .why-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 0.88rem;
+      color: #7A6A5E;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery-section {
+      background: var(--beige);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(62, 39, 35, 0);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover::after {
+      background: rgba(62, 39, 35, 0.2);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    /* ---------- Reviews ---------- */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+      border: 1px solid rgba(62, 39, 35, 0.04);
+    }
+
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .review-card p {
+      font-size: 0.95rem;
+      color: #5D4E44;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--brown-dark);
+      font-size: 1rem;
+    }
+
+    .review-author-info h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .review-author-info span {
+      font-size: 0.78rem;
+      color: #8D7B6E;
+      font-weight: 300;
+    }
+
+    /* ---------- Order Section ---------- */
+    .order-section {
+      background: var(--brown-dark);
+      color: var(--cream);
+    }
+
+    .order-section .section-title {
+      color: var(--cream);
+    }
+
+    .order-section .section-subtitle {
+      color: rgba(245, 230, 211, 0.7);
+    }
+
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .order-menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .order-item {
+      background: rgba(245, 230, 211, 0.06);
+      border: 1px solid rgba(201, 168, 124, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .order-item:hover {
+      background: rgba(245, 230, 211, 0.1);
+      border-color: rgba(201, 168, 124, 0.25);
+    }
+
+    .order-item h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--cream);
+    }
+
+    .order-item .order-price {
+      font-weight: 600;
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+
+    .order-item button {
+      padding: 8px 16px;
+      border-radius: 40px;
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: var(--transition);
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    .order-item button:hover {
+      background: #b8956a;
+      border-color: #b8956a;
+      transform: translateY(-2px);
+    }
+
+    .cart-panel {
+      background: rgba(245, 230, 211, 0.06);
+      border: 1px solid rgba(201, 168, 124, 0.15);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .cart-panel h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-panel h3 i {
+      color: var(--gold);
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 30px 0;
+      color: rgba(245, 230, 211, 0.4);
+      font-weight: 300;
+      font-size: 0.92rem;
+    }
+
+    .cart-empty i {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(245, 230, 211, 0.08);
+      gap: 10px;
+    }
+
+    .cart-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-info h4 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--cream);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-info span {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-item-controls button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid rgba(245, 230, 211, 0.2);
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .cart-item-controls button:hover {
+      background: var(--gold);
+      color: var(--brown-dark);
+      border-color: var(--gold);
+    }
+
+    .cart-item-controls .remove-btn {
+      border-color: rgba(220, 80, 80, 0.4);
+      color: #E57373;
+    }
+
+    .cart-item-controls .remove-btn:hover {
+      background: #E57373;
+      border-color: #E57373;
+      color: var(--white);
+    }
+
+    .cart-item-controls span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      min-width: 20px;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .cart-summary {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(245, 230, 211, 0.1);
+    }
+
+    .cart-summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 0.92rem;
+      color: rgba(245, 230, 211, 0.8);
+    }
+
+    .cart-summary-row.total {
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--cream);
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(245, 230, 211, 0.1);
+    }
+
+    .cart-summary-row.total span:last-child {
+      color: var(--gold);
+    }
+
+    .place-order-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 60px;
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .place-order-btn:hover {
+      background: #b8956a;
+      border-color: #b8956a;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(201, 168, 124, 0.3);
+    }
+
+    .place-order-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ---------- Reservation ---------- */
+    .reservation-section {
+      background: var(--cream);
+    }
+
+    .reservation-form {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 48px 44px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 13px 18px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(62, 39, 35, 0.12);
+      background: var(--cream);
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201, 168, 124, 0.12);
+      background: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group .error-message {
+      font-size: 0.78rem;
+      color: #D32F2F;
+      display: none;
+      margin-top: 2px;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea,
+    .form-group.error select {
+      border-color: #D32F2F;
+      background: #FFF5F5;
+    }
+
+    .form-group.error .error-message {
+      display: block;
+    }
+
+    .reservation-form .btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 16px;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-section {
+      background: var(--beige);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--brown-dark);
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact-item i {
+      font-size: 1.2rem;
+      color: var(--gold);
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-item h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 2px;
+    }
+
+    .contact-item p {
+      font-size: 0.88rem;
+      color: #6B5B4F;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .contact-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 300px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8D7B6E;
+      font-weight: 300;
+      font-size: 0.95rem;
+      border: 1px solid rgba(62, 39, 35, 0.06);
+      position: relative;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--brown-dark);
+      margin-bottom: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown-dark);
+      font-size: 1.05rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .social-icons a:hover {
+      background: var(--brown-dark);
+      color: var(--cream);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(62, 39, 35, 0.2);
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: var(--brown-dark);
+      color: rgba(245, 230, 211, 0.8);
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand .logo {
+      color: var(--cream);
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+
+    .footer h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: var(--cream);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      font-size: 0.88rem;
+      font-weight: 300;
+      transition: var(--transition);
+      color: rgba(245, 230, 211, 0.7);
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 6px;
+    }
+
+    .footer-contact p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(245, 230, 211, 0.7);
+    }
+
+    .footer-contact p i {
+      color: var(--gold);
+      margin-top: 4px;
+      width: 16px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 60px;
+      background: rgba(245, 230, 211, 0.08);
+      border: 1px solid rgba(245, 230, 211, 0.15);
+      color: var(--cream);
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(245, 230, 211, 0.4);
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--gold);
+      background: rgba(245, 230, 211, 0.12);
+    }
+
+    .newsletter-form button {
+      padding: 12px 24px;
+      border-radius: 60px;
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover {
+      background: #b8956a;
+      border-color: #b8956a;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 230, 211, 0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245, 230, 211, 0.5);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(245, 230, 211, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245, 230, 211, 0.7);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--gold);
+      color: var(--brown-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ---------- Toast Notification ---------- */
+    .toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--brown-dark);
+      color: var(--cream);
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 90vw;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast i {
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image img {
+        height: 360px;
+      }
+
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-panel {
+        position: static;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5) {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 100px 32px 40px;
+        gap: 20px;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        align-items: flex-start;
+        z-index: 1050;
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.05rem;
+        width: 100%;
+        padding: 8px 0;
+      }
+
+      .nav-order {
+        width: 100%;
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 90vh;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-buttons .btn {
+        padding: 12px 28px;
+        font-size: 0.88rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reservation-form {
+        padding: 32px 24px;
+      }
+
+      .contact-form {
+        padding: 28px 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5) {
+        grid-column: span 1;
+      }
+
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero-highlight {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .order-menu-items {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .toast {
+        font-size: 0.82rem;
+        padding: 12px 20px;
+      }
+    }
+
+    /* ---------- Accessibility ---------- */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .fade-up {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <i class="fas fa-mug-hot"></i> Brew & Bean
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#offers">Special Offers</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <button class="nav-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-highlight">
+          <i class="fas fa-circle"></i>
+          Freshly Roasted <i class="fas fa-circle"></i> Premium Beans <i class="fas fa-circle"></i> Made with Love
+        </div>
+        <h1>Your Perfect Cup, <br /><span>Brewed with Passion.</span></h1>
+        <p>Freshly roasted coffee, delicious food, and cozy moments — all under one roof.</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">Explore Menu <i class="fas fa-arrow-right"></i></a>
+          <a href="#order" class="btn btn-outline">Order Now <i class="fas fa-shopping-bag"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-up">
+          <img
+            src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=85&auto=format&fit=crop"
+            alt="Barista crafting a latte with precision at Brew & Bean Coffee House"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-text fade-up delay-1">
+          <h2>More Than Just Coffee</h2>
+          <p>
+            Brew & Bean is a cozy coffee house dedicated to serving freshly brewed coffee made from carefully selected premium beans.
+            From your morning espresso to an evening latte with friends, we create every cup with passion and care.
+          </p>
+          <div class="about-features">
+            <div class="about-feature">
+              <i class="fas fa-seedling"></i>
+              <span>Premium Coffee Beans</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-leaf"></i>
+              <span>Fresh Ingredients</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-user-tie"></i>
+              <span>Expert Baristas</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-couch"></i>
+              <span>Cozy Atmosphere</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MENU ========== -->
+  <section class="section menu-section" id="menu">
+    <div class="container">
+      <h2 class="section-title fade-up">Our Menu</h2>
+      <p class="section-subtitle fade-up delay-1">Handcrafted beverages and delicious bites, made fresh every day.</p>
+
+      <div class="menu-filters fade-up delay-2" id="menuFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="coffee">Coffee</button>
+        <button class="filter-btn" data-filter="non-coffee">Non-Coffee</button>
+        <button class="filter-btn" data-filter="snacks">Snacks</button>
+        <button class="filter-btn" data-filter="desserts">Desserts</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Menu items rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SPECIAL OFFERS ========== -->
+  <section class="section offers-section" id="offers">
+    <div class="container">
+      <h2 class="section-title fade-up">Today's Special</h2>
+      <p class="section-subtitle fade-up delay-1">Irresistible deals you won't want to miss — available for a limited time.</p>
+
+      <div class="offers-grid">
+        <div class="offer-card fade-up delay-1">
+          <i class="fas fa-gift"></i>
+          <h3>Buy 1 Get 1 Free</h3>
+          <p>On selected coffees — Espresso, Americano, and Cappuccino. Perfect for sharing with a friend.</p>
+          <button class="btn btn-gold btn-sm" onclick="showToast('BOGO offer added! Use code BREW2 at checkout.')">Grab the Offer</button>
+        </div>
+        <div class="offer-card fade-up delay-2">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Student Combo</h3>
+          <p>Coffee + Sandwich at just ₹249. Bring your student ID and enjoy a filling meal.</p>
+          <button class="btn btn-gold btn-sm" onclick="showToast('Student Combo added! Show your ID at the counter.')">Grab the Offer</button>
+        </div>
+        <div class="offer-card fade-up delay-3">
+          <i class="fas fa-calendar-weekend"></i>
+          <h3>Weekend Special</h3>
+          <p>20% OFF on all beverages and desserts every Saturday and Sunday. Treat yourself!</p>
+          <button class="btn btn-gold btn-sm" onclick="showToast('Weekend Special unlocked! Enjoy 20% off.')">Grab the Offer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="section" id="why">
+    <div class="container">
+      <h2 class="section-title fade-up">Why Choose Us</h2>
+      <p class="section-subtitle fade-up delay-1">We're committed to giving you the best coffee experience, every single time.</p>
+
+      <div class="why-grid">
+        <div class="why-card fade-up delay-1">
+          <div class="icon-circle">☕</div>
+          <h3>Premium Beans</h3>
+          <p>We source only the finest Arabica and Robusta beans from sustainable farms.</p>
+        </div>
+        <div class="why-card fade-up delay-2">
+          <div class="icon-circle">👨‍🍳</div>
+          <h3>Expert Baristas</h3>
+          <p>Our skilled baristas craft each cup with precision and years of experience.</p>
+        </div>
+        <div class="why-card fade-up delay-3">
+          <div class="icon-circle">🌱</div>
+          <h3>Fresh Ingredients</h3>
+          <p>From milk to syrups to snacks — everything is fresh, natural, and delicious.</p>
+        </div>
+        <div class="why-card fade-up delay-4">
+          <div class="icon-circle">❤️</div>
+          <h3>Made with Love</h3>
+          <p>Every drink and dish is prepared with genuine care and a warm smile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <h2 class="section-title fade-up">Gallery</h2>
+      <p class="section-subtitle fade-up delay-1">A glimpse into the Brew & Bean experience.</p>
+
+      <div class="gallery-grid fade-up delay-2">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=85&auto=format&fit=crop" alt="Coffee cup with latte art on a wooden table" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=85&auto=format&fit=crop" alt="Cozy café interior with warm lighting" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=85&auto=format&fit=crop" alt="Barista preparing pour-over coffee" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=85&auto=format&fit=crop" alt="Delicious chocolate dessert plate" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=85&auto=format&fit=crop" alt="Friends enjoying coffee together at a café" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=85&auto=format&fit=crop" alt="Freshly roasted coffee beans close-up" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REVIEWS ========== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <h2 class="section-title fade-up">What Our Customers Say</h2>
+      <p class="section-subtitle fade-up delay-1">Real reviews from our beloved coffee community.</p>
+
+      <div class="reviews-grid">
+        <div class="review-card fade-up delay-1">
+          <div class="review-stars">★★★★★</div>
+          <p>"Absolutely loved the cappuccino! The atmosphere is peaceful and perfect for working."</p>
+          <div class="review-author">
+            <div class="review-avatar">P</div>
+            <div class="review-author-info">
+              <h4>Priya</h4>
+              <span>Regular Customer</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up delay-2">
+          <div class="review-stars">★★★★★</div>
+          <p>"The coffee is amazing and the staff are very friendly. Definitely coming back!"</p>
+          <div class="review-author">
+            <div class="review-avatar">R</div>
+            <div class="review-author-info">
+              <h4>Rahul</h4>
+              <span>Coffee Enthusiast</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up delay-3">
+          <div class="review-stars">★★★★☆</div>
+          <p>"Great spot for students. Affordable combos, fast Wi-Fi, and the cold coffee is top-notch."</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <div class="review-author-info">
+              <h4>Ananya</h4>
+              <span>College Student</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up delay-4">
+          <div class="review-stars">★★★★★</div>
+          <p>"Took my family here on a Sunday. The brownie and cheesecake were divine. Cozy vibes!"</p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div class="review-author-info">
+              <h4>Mohan</h4>
+              <span>Family Visitor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ORDER ONLINE ========== -->
+  <section class="section order-section" id="order">
+    <div class="container">
+      <h2 class="section-title fade-up">Order Online</h2>
+      <p class="section-subtitle fade-up delay-1">Pick your favorites, adjust quantities, and place your order in seconds.</p>
+
+      <div class="order-layout">
+        <div class="order-menu-items fade-up delay-2" id="orderItems">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="cart-panel fade-up delay-3" id="cartPanel">
+          <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+          <div id="cartContent">
+            <div class="cart-empty">
+              <i class="fas fa-mug-saucer"></i>
+              Your cart is empty.<br />Add something delicious!
+            </div>
+          </div>
+          <div id="cartSummary" style="display:none;">
+            <div class="cart-summary">
+              <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Tax (5%)</span>
+                <span id="cartTax">₹0</span>
+              </div>
+              <div class="cart-summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">₹0</span>
+              </div>
+            </div>
+            <button class="place-order-btn" id="placeOrderBtn">
+              <i class="fas fa-check-circle"></i> Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESERVATION ========== -->
+  <section class="section reservation-section" id="reservation">
+    <div class="container">
+      <h2 class="section-title fade-up">Reserve Your Table</h2>
+      <p class="section-subtitle fade-up delay-1">Book a cozy spot for your next coffee date, meeting, or family outing.</p>
+
+      <form class="reservation-form fade-up delay-2" id="reservationForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="resName">Full Name *</label>
+            <input type="text" id="resName" placeholder="Your name" required />
+            <span class="error-message">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="resPhone">Phone Number *</label>
+            <input type="tel" id="resPhone" placeholder="+91 98765 43210" required />
+            <span class="error-message">Please enter a valid phone number.</span>
+          </div>
+          <div class="form-group">
+            <label for="resEmail">Email *</label>
+            <input type="email" id="resEmail" placeholder="you@example.com" required />
+            <span class="error-message">Please enter a valid email address.</span>
+          </div>
+          <div class="form-group">
+            <label for="resDate">Date *</label>
+            <input type="date" id="resDate" required />
+            <span class="error-message">Please select a date.</span>
+          </div>
+          <div class="form-group">
+            <label for="resTime">Time *</label>
+            <input type="time" id="resTime" required />
+            <span class="error-message">Please select a time.</span>
+          </div>
+          <div class="form-group">
+            <label for="resGuests">Number of Guests *</label>
+            <select id="resGuests" required>
+              <option value="">Select guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6+">6+ Guests</option>
+            </select>
+            <span class="error-message">Please select number of guests.</span>
+          </div>
+          <div class="form-group full-width">
+            <label for="resRequest">Special Request</label>
+            <textarea id="resRequest" placeholder="Any allergies, seating preferences, or special occasions?"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Reserve Table <i class="fas fa-calendar-check"></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title fade-up">Visit Us</h2>
+      <p class="section-subtitle fade-up delay-1">We'd love to hear from you — drop by or send us a message.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info fade-up delay-2">
+          <h3>Brew & Bean Coffee House</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Address</h4>
+              <p>123 Coffee Street,<br />Chennai, Tamil Nadu, India</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>hello@brewandbean.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Opening Hours</h4>
+              <p>Monday – Friday: 8:00 AM – 10:00 PM<br />Saturday – Sunday: 9:00 AM – 11:00 PM</p>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="fade-up delay-3">
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0582!2d80.2707!3d13.0827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA0JzU3LjciTiA4MMKwMTYnMTQuNSJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Brew & Bean Coffee House location map"
+            ></iframe>
+          </div>
+          <div class="contact-form" style="margin-top: 28px;">
+            <h3>Send a Message</h3>
+            <form id="contactForm" novalidate>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <input type="text" id="contactName" placeholder="Your Name" required />
+                <span class="error-message">Please enter your name.</span>
+              </div>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <input type="email" id="contactEmail" placeholder="Your Email" required />
+                <span class="error-message">Please enter a valid email.</span>
+              </div>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+                <span class="error-message">Please enter a message.</span>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><i class="fas fa-mug-hot"></i> Brew & Bean</div>
+          <p>Your perfect cup, brewed with passion. Premium coffee, cozy vibes, and delicious food in the heart of Chennai.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#offers">Special Offers</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Our Menu</h4>
+          <ul class="footer-links">
+            <li><a href="#menu">Coffee</a></li>
+            <li><a href="#menu">Non-Coffee</a></li>
+            <li><a href="#menu">Snacks</a></li>
+            <li><a href="#menu">Desserts</a></li>
+            <li><a href="#order">Order Online</a></li>
+            <li><a href="#reservation">Reserve Table</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Stay Updated</h4>
+          <p style="font-size:0.88rem; font-weight:300; line-height:1.7; margin-bottom:12px;">Subscribe for exclusive offers, new menu launches, and coffee tips.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Your email" aria-label="Email for newsletter" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Brew & Bean Coffee House. All Rights Reserved.</p>
+        <p style="font-size:0.8rem;">Crafted with <i class="fas fa-heart" style="color:var(--gold);"></i> in Chennai</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart!</span>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* =============================================
+         MENU DATA
+         ============================================= */
+      const menuData = [
+        // Coffee
+        { id: 1, name: 'Espresso', category: 'coffee', price: 120, desc: 'Rich and bold single shot of pure coffee energy.', img: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80&auto=format&fit=crop' },
+        { id: 2, name: 'Americano', category: 'coffee', price: 140, desc: 'Espresso diluted with hot water for a smooth, strong cup.', img: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?w=400&q=80&auto=format&fit=crop' },
+        { id: 3, name: 'Cappuccino', category: 'coffee', price: 160, desc: 'Perfect balance of espresso, steamed milk, and velvety foam.', img: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80&auto=format&fit=crop' },
+        { id: 4, name: 'Café Latte', category: 'coffee', price: 170, desc: 'Smooth espresso with silky steamed milk and a light foam top.', img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80&auto=format&fit=crop' },
+        { id: 5, name: 'Mocha', category: 'coffee', price: 190, desc: 'Espresso meets chocolate and steamed milk — pure indulgence.', img: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400&q=80&auto=format&fit=crop' },
+        { id: 6, name: 'Cold Coffee', category: 'coffee', price: 180, desc: 'Chilled, blended coffee with ice cream and a chocolate drizzle.', img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80&auto=format&fit=crop' },
+        // Non-Coffee
+        { id: 7, name: 'Hot Chocolate', category: 'non-coffee', price: 160, desc: 'Creamy melted chocolate with steamed milk and cocoa dust.', img: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&q=80&auto=format&fit=crop' },
+        { id: 8, name: 'Green Tea', category: 'non-coffee', price: 120, desc: 'Antioxidant-rich loose leaf green tea, light and refreshing.', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&q=80&auto=format&fit=crop' },
+        { id: 9, name: 'Masala Tea', category: 'non-coffee', price: 100, desc: 'Traditional Indian chai with aromatic spices and milk.', img: 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?w=400&q=80&auto=format&fit=crop' },
+        { id: 10, name: 'Fresh Lemonade', category: 'non-coffee', price: 130, desc: 'Zesty lemon juice with mint and a hint of sweetness.', img: 'https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9d?w=400&q=80&auto=format&fit=crop' },
+        // Snacks
+        { id: 11, name: 'Veg Sandwich', category: 'snacks', price: 150, desc: 'Grilled sandwich with fresh veggies and mint chutney.', img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80&auto=format&fit=crop' },
+        { id: 12, name: 'Cheese Sandwich', category: 'snacks', price: 180, desc: 'Golden grilled sandwich loaded with molten cheese.', img: 'https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400&q=80&auto=format&fit=crop' },
+        { id: 13, name: 'French Fries', category: 'snacks', price: 140, desc: 'Crispy golden fries seasoned with our special spice mix.', img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80&auto=format&fit=crop' },
+        { id: 14, name: 'Garlic Bread', category: 'snacks', price: 160, desc: 'Toasted baguette with garlic butter and herbs.', img: 'https://images.unsplash.com/photo-1544982503-9f984c14501a?w=400&q=80&auto=format&fit=crop' },
+        // Desserts
+        { id: 15, name: 'Chocolate Brownie', category: 'desserts', price: 150, desc: 'Fudgy walnut brownie served warm with chocolate sauce.', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80&auto=format&fit=crop' },
+        { id: 16, name: 'Blueberry Cheesecake', category: 'desserts', price: 220, desc: 'Creamy baked cheesecake with blueberry compote.', img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80&auto=format&fit=crop' },
+        { id: 17, name: 'Chocolate Cake', category: 'desserts', price: 180, desc: 'Rich, moist chocolate cake layered with ganache.', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80&auto=format&fit=crop' }
+      ];
+
+      /* =============================================
+         RENDER MENU CARDS
+         ============================================= */
+      const menuGrid = document.getElementById('menuGrid');
+
+      function renderMenu(filter = 'all') {
+        const filtered = filter === 'all' ? menuData : menuData.filter(item => item.category === filter);
+        menuGrid.innerHTML = filtered.map(item => `
+          <article class="menu-card fade-up visible" data-category="${item.category}">
+            <div class="menu-card-image">
+              <img src="${item.img}" alt="${item.name}" loading="lazy" />
+            </div>
+            <div class="menu-card-body">
+              <h3>${item.name}</h3>
+              <p>${item.desc}</p>
+              <div class="menu-card-footer">
+                <span class="menu-price">₹${item.price}</span>
+                <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      renderMenu();
+
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          renderMenu(this.dataset.filter);
+        });
+      });
+
+      /* =============================================
+         ORDER / CART SYSTEM
+         ============================================= */
+      let cart = [];
+
+      const orderItemsEl = document.getElementById('orderItems');
+      const cartContent = document.getElementById('cartContent');
+      const cartSummary = document.getElementById('cartSummary');
+      const cartSubtotal = document.getElementById('cartSubtotal');
+      const cartTax = document.getElementById('cartTax');
+      const cartTotal = document.getElementById('cartTotal');
+      const placeOrderBtn = document.getElementById('placeOrderBtn');
+
+      function renderOrderItems() {
+        orderItemsEl.innerHTML = menuData.map(item => `
+          <div class="order-item">
+            <h4>${item.name}</h4>
+            <span class="order-price">₹${item.price}</span>
+            <button data-id="${item.id}">Add</button>
+          </div>
+        `).join('');
+      }
+      renderOrderItems();
+
+      function addToCart(id) {
+        const menuItem = menuData.find(m => m.id === id);
+        if (!menuItem) return;
+        const existing = cart.find(c => c.id === id);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ ...menuItem, qty: 1 });
+        }
+        updateCartUI();
+        showToast(`${menuItem.name} added to cart!`);
+      }
+
+      function removeFromCart(id) {
+        cart = cart.filter(c => c.id !== id);
+        updateCartUI();
+      }
+
+      function updateQty(id, delta) {
+        const item = cart.find(c => c.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+          removeFromCart(id);
+        } else {
+          updateCartUI();
+        }
+      }
+
+      function updateCartUI() {
+        if (cart.length === 0) {
+          cartContent.innerHTML = `
+            <div class="cart-empty">
+              <i class="fas fa-mug-saucer"></i>
+              Your cart is empty.<br />Add something delicious!
+            </div>
+          `;
+          cartSummary.style.display = 'none';
+          return;
+        }
+
+        cartContent.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <span>₹${item.price * item.qty}</span>
+            </div>
+            <div class="cart-item-controls">
+              <button class="qty-minus" data-id="${item.id}">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-plus" data-id="${item.id}">+</button>
+              <button class="remove-btn" data-id="${item.id}" aria-label="Remove ${item.name}"><i class="fas fa-trash-alt" style="font-size:0.7rem;"></i></button>
+            </div>
+          </div>
+        `).join('');
+
+        // Subtotal, tax, total
+        const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const tax = Math.round(subtotal * 0.05);
+        const total = subtotal + tax;
+
+        cartSubtotal.textContent = `₹${subtotal}`;
+        cartTax.textContent = `₹${tax}`;
+        cartTotal.textContent = `₹${total}`;
+        cartSummary.style.display = 'block';
+      }
+
+      // Event delegation for cart controls & add buttons
+      document.addEventListener('click', function(e) {
+        // Add to cart from menu cards
+        if (e.target.classList.contains('add-to-cart')) {
+          const id = parseInt(e.target.dataset.id);
+          addToCart(id);
+        }
+        // Add from order items
+        if (e.target.closest('.order-item') && e.target.tagName === 'BUTTON') {
+          const id = parseInt(e.target.dataset.id);
+          addToCart(id);
+        }
+        // Quantity plus
+        if (e.target.classList.contains('qty-plus')) {
+          const id = parseInt(e.target.dataset.id);
+          updateQty(id, 1);
+        }
+        // Quantity minus
+        if (e.target.classList.contains('qty-minus')) {
+          const id = parseInt(e.target.dataset.id);
+          updateQty(id, -1);
+        }
+        // Remove
+        if (e.target.classList.contains('remove-btn') || e.target.closest('.remove-btn')) {
+          const btn = e.target.closest('.remove-btn') || e.target;
+          const id = parseInt(btn.dataset.id);
+          removeFromCart(id);
+        }
+      });
+
+      // Place order
+      placeOrderBtn.addEventListener('click', function() {
+        if (cart.length === 0) return;
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const tax = Math.round(totalAmount * 0.05);
+        const finalTotal = totalAmount + tax;
+
+        cart = [];
+        updateCartUI();
+        showToast(`Order placed! ${totalItems} item(s) — ₹${finalTotal} — Thank you! ☕`);
+      });
+
+      /* =============================================
+         FORM VALIDATION HELPERS
+         ============================================= */
+      function validateField(field, condition, message) {
+        const formGroup = field.closest('.form-group');
+        if (!formGroup) return condition;
+        if (!condition) {
+          formGroup.classList.add('error');
+          const errorEl = formGroup.querySelector('.error-message');
+          if (errorEl) errorEl.textContent = message;
+          return false;
+        } else {
+          formGroup.classList.remove('error');
+          return true;
+        }
+      }
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function isValidPhone(phone) {
+        return /^[\d\s\+\-\(\)]{7,15}$/.test(phone.trim());
+      }
+
+      /* =============================================
+         RESERVATION FORM
+         ============================================= */
+      const reservationForm = document.getElementById('reservationForm');
+
+      reservationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name = document.getElementById('resName');
+        const phone = document.getElementById('resPhone');
+        const email = document.getElementById('resEmail');
+        const date = document.getElementById('resDate');
+        const time = document.getElementById('resTime');
+        const guests = document.getElementById('resGuests');
+
+        valid = validateField(name, name.value.trim().length >= 2, 'Please enter your name (min 2 chars).') && valid;
+        valid = validateField(phone, isValidPhone(phone.value), 'Please enter a valid phone number.') && valid;
+        valid = validateField(email, isValidEmail(email.value), 'Please enter a valid email address.') && valid;
+        valid = validateField(date, date.value !== '', 'Please select a date.') && valid;
+        valid = validateField(time, time.value !== '', 'Please select a time.') && valid;
+        valid = validateField(guests, guests.value !== '', 'Please select number of guests.') && valid;
+
+        if (valid) {
+          showToast('Table reserved successfully! We\'ll confirm via email. 🪑');
+          reservationForm.reset();
+        } else {
+          showToast('Please fix the errors in the form.');
+        }
+      });
+
+      /* =============================================
+         CONTACT FORM
+         ============================================= */
+      const contactForm = document.getElementById('contactForm');
+
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name = document.getElementById('contactName');
+        const email = document.getElementById('contactEmail');
+        const message = document.getElementById('contactMessage');
+
+        valid = validateField(name, name.value.trim().length >= 2, 'Please enter your name.') && valid;
+        valid = validateField(email, isValidEmail(email.value), 'Please enter a valid email.') && valid;
+        valid = validateField(message, message.value.trim().length >= 5, 'Please enter a message (min 5 chars).') && valid;
+
+        if (valid) {
+          showToast('Message sent! We\'ll get back to you soon. 📧');
+          contactForm.reset();
+        } else {
+          showToast('Please fix the errors in the form.');
+        }
+      });
+
+      /* =============================================
+         NEWSLETTER FORM
+         ============================================= */
+      const newsletterForm = document.getElementById('newsletterForm');
+
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = this.querySelector('input[type="email"]');
+        if (!isValidEmail(input.value)) {
+          showToast('Please enter a valid email address.');
+          return;
+        }
+        showToast('Subscribed! Welcome to the Brew & Bean family. ☕');
+        newsletterForm.reset();
+      });
+
+      /* =============================================
+         TOAST NOTIFICATION
+         ============================================= */
+      let toastTimeout;
+
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      // Expose showToast globally for inline onclick
+      window.showToast = showToast;
+
+      /* =============================================
+         HAMBURGER MENU
+         ============================================= */
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', function() {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+
+      // Close mobile menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+
+      /* =============================================
+         NAVBAR SCROLL EFFECT + ACTIVE LINK
+         ============================================= */
+      const navbar = document.getElementById('navbar');
+      const sections = document.querySelectorAll('section[id]');
+      const navAnchors = document.querySelectorAll('.nav-links a');
+
+      function updateActiveLink() {
+        let current = '';
+        const scrollPos = window.scrollY + 120;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navAnchors.forEach(anchor => {
+          anchor.classList.remove('active');
+          if (anchor.getAttribute('href') === `#${current}`) {
+            anchor.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        updateActiveLink();
+
+        // Scroll to top button
+        if (window.scrollY > 500) {
+          document.getElementById('scrollTop').classList.add('visible');
+        } else {
+          document.getElementById('scrollTop').classList.remove('visible');
+        }
+      });
+
+      /* =============================================
+         SCROLL TO TOP
+         ============================================= */
+      document.getElementById('scrollTop').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* =============================================
+         SCROLL ANIMATIONS (Intersection Observer)
+         ============================================= */
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      /* =============================================
+         SMOOTH SCROLL FOR ANCHOR LINKS (fallback)
+         ============================================= */
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      /* =============================================
+         INITIAL SETUP
+         ============================================= */
+      // Set min date for reservation to today
+      const resDate = document.getElementById('resDate');
+      if (resDate) {
+        const today = new Date().toISOString().split('T')[0];
+        resDate.setAttribute('min', today);
+      }
+
+      // Re-observe dynamically added menu cards (they have .fade-up.visible already)
+      // For filter changes, we just add visible directly
+
+      // Trigger initial fade-up on load
+      window.addEventListener('load', () => {
+        document.querySelectorAll('.fade-up').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('visible');
+          }
+        });
+      });
+
+      // Initial active link update
+      setTimeout(updateActiveLink, 100);
+
+    })();
+  </script>
+</body>
+</html>
